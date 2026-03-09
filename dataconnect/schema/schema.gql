@@ -1,0 +1,62 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  age: Int
+  experienceLevel: String
+}
+
+type Activity @table {
+  user: User!
+  activityType: String!
+  durationMinutes: Int!
+  activityDate: Date!
+  createdAt: Timestamp!
+  distanceKm: Float
+  weightKg: Float
+  reps: Int
+  notes: String
+}
+
+type Challenge @table {
+  name: String!
+  description: String!
+  startDate: Date!
+  endDate: Date!
+  challengeType: String!
+  createdAt: Timestamp!
+  imageUrl: String
+  rules: String
+}
+
+type ChallengeEntry @table {
+  user: User!
+  challenge: Challenge!
+  entryDate: Date!
+  resultValue: Float!
+  createdAt: Timestamp!
+  notes: String
+  proofImageUrl: String
+}
+
+type WorkoutRoutine @table {
+  user: User!
+  name: String!
+  description: String!
+  createdAt: Timestamp!
+  isPublic: Boolean
+  durationMinutesEstimate: Int
+}
+
+type RoutineActivity @table {
+  workoutRoutine: WorkoutRoutine!
+  activityType: String!
+  durationMinutes: Int!
+  positionInRoutine: Int!
+  createdAt: Timestamp!
+  distanceKm: Float
+  weightKg: Float
+  reps: Int
+  instructions: String
+}
